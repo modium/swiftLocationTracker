@@ -34,6 +34,27 @@ class ViewController: UIViewController {
             }
         }
 
+        kmThreshold.addLocationChangeObserver { (result) -> () in
+            switch result {
+            case .success(let location):
+                let coordinate = location.physical.coordinate
+                let locationString = "\(coordinate.latitude), \(coordinate.longitude)"
+                self.updateKMLabel(withText: locationString)
+            case .failure:
+                self.updateKMLabel(withText: "Failure")
+            }
+        }
+
+        mileThreshold.addLocationChangeObserver { (result) -> () in
+            switch result {
+            case .success(let location):
+                let coordinate = location.physical.coordinate
+                let locationString = "\(coordinate.latitude), \(coordinate.longitude)"
+                self.updateMileLabel(withText: locationString)
+            case .failure:
+                self.updateMileLabel(withText: "Failure")
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,10 +62,15 @@ class ViewController: UIViewController {
     }
 
     func updateLocationLabel(withText text: String) -> Void {
-//        self.locationLabel.text = "Location: \(text)"
         meterLabel.text = "Location: \(text)"
+    }
+
+    func updateKMLabel(withText text: String) -> Void {
         kmLabel.text = "Location: \(text)"
+    }
+
+    func updateMileLabel(withText text: String) -> Void {
         mileLabel.text = "Location: \(text)"
-    }    
+    }
 }
 
