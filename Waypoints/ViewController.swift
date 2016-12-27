@@ -26,6 +26,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        testArray.removeAll() // Remove all elements from array
+        
         updateLocationLabel(withText: "Unknown")
 
         meterThreshold.addLocationChangeObserver { (result) -> () in
@@ -34,7 +36,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let coordinate = location.physical.coordinate
                 let locationString = "\(coordinate.latitude), \(coordinate.longitude)"
                 self.updateLocationLabel(withText: locationString)
-                self.testArray.append(locationString)
+                self.testArray.append(locationString) // Test appending locations to array
             case .failure:
                 self.updateLocationLabel(withText: "Failure")
             }
@@ -46,8 +48,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let coordinate = location.physical.coordinate
                 let locationString = "\(coordinate.latitude), \(coordinate.longitude)"
                 self.updateKMLabel(withText: locationString)
-//                self.kmWaypoints.append(locationString)
-//                self.testArray.append(locationString) // Test appending locations to array
+                self.kmWaypoints.append(locationString)
             case .failure:
                 self.updateKMLabel(withText: "Failure")
             }
@@ -75,16 +76,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "coordinateCell", for: indexPath as IndexPath)
-        cell.textLabel?.text = testArray[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "coordinateCell", for: indexPath) as! CoordinateCell
+//        cell.coordinateLbl.text = testArray[indexPath.row]
+        cell.coordinateLbl.text = kmWaypoints[indexPath.row]
         return cell
     }
     
     @IBAction func reloadTable(_ sender: AnyObject) {
         self.tableView.reloadData()
-        for coordinates in testArray {
-            print(coordinates)
-        }
+//        for coordinates in testArray {
+//            print(coordinates)
+//        }
+    }
+    
+    @IBAction func clearCoordinates(_ sender: AnyObject) {
+        testArray.removeAll()
     }
     
     override func didReceiveMemoryWarning() {

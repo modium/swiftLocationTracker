@@ -13,6 +13,7 @@
 		3C6645201E12AA4D009DBAFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C66451F1E12AA4D009DBAFB /* Assets.xcassets */; };
 		3C6645231E12AA4D009DBAFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C6645211E12AA4D009DBAFB /* LaunchScreen.storyboard */; };
 		3C66452B1E12ABD2009DBAFB /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C66452A1E12ABD2009DBAFB /* LocationTracker.swift */; };
+		3C66452D1E12F6D3009DBAFB /* CoordinateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C66452C1E12F6D3009DBAFB /* CoordinateCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3C6645221E12AA4D009DBAFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C6645241E12AA4D009DBAFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C66452A1E12ABD2009DBAFB /* LocationTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTracker.swift; sourceTree = "<group>"; };
+		3C66452C1E12F6D3009DBAFB /* CoordinateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinateCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				3C66451F1E12AA4D009DBAFB /* Assets.xcassets */,
 				3C6645211E12AA4D009DBAFB /* LaunchScreen.storyboard */,
 				3C6645241E12AA4D009DBAFB /* Info.plist */,
+				3C66452C1E12F6D3009DBAFB /* CoordinateCell.swift */,
 			);
 			path = Waypoints;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				3C66451B1E12AA4D009DBAFB /* ViewController.swift in Sources */,
 				3C6645191E12AA4D009DBAFB /* AppDelegate.swift in Sources */,
 				3C66452B1E12ABD2009DBAFB /* LocationTracker.swift in Sources */,
+				3C66452D1E12F6D3009DBAFB /* CoordinateCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
