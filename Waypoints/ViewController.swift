@@ -23,6 +23,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var mileWaypoints = [String]()
     var testArray = [String] ()
     
+    let testBOL = "BOL-1016"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +37,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             case .success(let location):
                 let coordinate = location.physical.coordinate
                 let locationString = "\(coordinate.latitude), \(coordinate.longitude)"
+                
+                // Test function
+                self.updateLocation(latitude: "\(coordinate.latitude)", longitude: "\(coordinate.longitude)", bolID: self.testBOL)
+                
                 self.updateLocationLabel(withText: locationString)
                 self.testArray.append(locationString) // Test appending locations to array
             case .failure:
@@ -77,8 +83,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "coordinateCell", for: indexPath) as! CoordinateCell
-//        cell.coordinateLbl.text = testArray[indexPath.row]
-        cell.coordinateLbl.text = kmWaypoints[indexPath.row]
+        cell.coordinateLbl.text = testArray[indexPath.row]
+//        cell.coordinateLbl.text = kmWaypoints[indexPath.row]
         return cell
     }
     
@@ -91,6 +97,74 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func clearCoordinates(_ sender: AnyObject) {
         testArray.removeAll()
+        tableView.reloadData()
+    }
+    
+    func updateLocation(latitude: String, longitude: String, bolID: String) {
+        print("'lat': \(latitude), 'long': \(longitude), 'bol_id': \(bolID)")
+    
+//        let myUrl = NSURL(string: "http://dev.bulkdash.com/api/v1/bol/addLocation")
+//        let request = NSMutableURLRequest(URL:myUrl!);
+//        request.HTTPMethod = "POST";
+//        
+//        let postString = "email=\(userEmailAddress!)&password=\(userPassword!)";
+//        
+//        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
+//        
+//        NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data:NSData?, response:NSURLResponse?, error:NSError?) in
+//            
+//            dispatch_async(dispatch_get_main_queue()) {
+//                
+//                spinningActivity.hideAnimated(true)
+//                
+//                if(error != nil) {
+//                    // Display alert message
+//                    let myAlert = UIAlertController(title: "Alert", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
+//                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+//                    myAlert.addAction(okAction)
+//                    self.presentViewController(myAlert, animated: true, completion: nil)
+//                    return
+//                }
+//                
+//                do {
+//                    let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary
+//                    
+//                    if let parseJSON = json { // Try to unwrap JSON data
+//                        
+//                        let userId = parseJSON["userId"]
+//                        
+//                        if(userId != nil) {
+//                            
+//                            // DO NOT STORE PASSWORD
+//                            NSUserDefaults.standardUserDefaults().setObject(parseJSON["userName"], forKey: "userName")
+//                            NSUserDefaults.standardUserDefaults().setObject(parseJSON["token"], forKey: "token")
+//                            /* This is where we store the user's Id for app use */
+//                            NSUserDefaults.standardUserDefaults().setObject(parseJSON["userId"], forKey: "userId")
+//                            NSUserDefaults.standardUserDefaults().synchronize() // Store user data within app for later access
+//                            
+//                            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//                            appDelegate.buildNavigationDrawer()
+//                            
+//                        } else {
+//                            
+//                            // Display alert message
+//                            let userMessage = parseJSON["error"] as? String
+//                            let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
+//                            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+//                            myAlert.addAction(okAction)
+//                            self.presentViewController(myAlert, animated: true, completion: nil)
+//                            
+//                        }
+//                        
+//                    }
+//                } catch {
+//                    print(error)
+//                }
+//                
+//            }
+//            
+//        }).resume()
+        
     }
     
     override func didReceiveMemoryWarning() {
